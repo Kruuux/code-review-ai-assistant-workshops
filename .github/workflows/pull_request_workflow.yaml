@@ -1,8 +1,9 @@
 name: CodeGuru Security Example
+
 on:
-  push:
+  pull_request:
     branches:
-      - 'main'
+      - main
 
 permissions:
   id-token: write
