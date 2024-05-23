@@ -17,6 +17,7 @@ export class BooksService {
   }
 
   findByName(name: string) {
+    // ===== 2 =====
     return this.bookRepository.query(
       `SELECT * FROM book WHERE name = '${name}'`,
     );
