@@ -7,6 +7,14 @@ content-type: application/json
 }
 
 ###
+POST http://localhost:3000/books/read-files
+content-type: application/json
+
+{
+    "pathname": "../books.controller.js"
+}
+
+###
 GET http://localhost:3000/books
 
 ###

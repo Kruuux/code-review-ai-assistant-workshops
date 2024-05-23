@@ -10,6 +10,8 @@ import {
 import { BooksService } from './books.service';
 import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
+import * as fs from 'fs';
+import * as path from 'path';
 
 @Controller('books')
 export class BooksController {
@@ -18,6 +20,13 @@ export class BooksController {
   @Post()
   create(@Body() createBookDto: CreateBookDto) {
     return this.booksService.create(createBookDto);
+  }
+
+  @Post('read-files')
+  readFile(@Body() data: any) {
+    // ===== 4 =====
+    const filePath = path.join(__dirname, 'files', data.pathname);
+    return fs.readFileSync(filePath, 'utf8');
   }
 
   @Get('title/:title')
