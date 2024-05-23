@@ -6,12 +6,15 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
+  Res,
 } from '@nestjs/common';
 import { BooksService } from './books.service';
 import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
 import * as fs from 'fs';
 import * as path from 'path';
+import { Response } from 'express';
 
 @Controller('books')
 export class BooksController {
@@ -27,6 +30,12 @@ export class BooksController {
     // ===== 4 =====
     const filePath = path.join(__dirname, 'files', data.pathname);
     return fs.readFileSync(filePath, 'utf8');
+  }
+
+  @Get('redirect')
+  redirectTo(@Query('url') url: string, @Res() res: Response) {
+    // ===== 5 =====
+    res.redirect(url);
   }
 
   @Get('title/:title')
