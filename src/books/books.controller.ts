@@ -20,6 +20,12 @@ export class BooksController {
     return this.booksService.create(createBookDto);
   }
 
+  @Get('title/:title')
+  returnParsedTitle(@Param('title') title: string) {
+    // ===== 3 =====
+    return `<div>${title}</div>`;
+  }
+
   @Get('name/:name')
   findByName(@Param('name') name: string) {
     return this.booksService.findByName(name);

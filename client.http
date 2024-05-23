@@ -7,18 +7,18 @@ content-type: application/json
 }
 
 ###
-
 GET http://localhost:3000/books
-###
 
+###
+GET http://localhost:3000/books/title/title
+
+###
 GET http://localhost:3000/books/name/name
 
 ###
-
 GET http://localhost:3000/books/1
 
 ###
-
 PATCH http://localhost:3000/books/1
 content-type: application/json
 
@@ -26,6 +26,6 @@ content-type: application/json
     "name": "updated name",
     "description": "updated description"
 }
-###
 
+###
 DELETE http://localhost:3000/books/1
