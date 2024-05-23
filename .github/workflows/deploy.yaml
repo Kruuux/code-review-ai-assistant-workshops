@@ -34,6 +34,7 @@ jobs:
           source_path: .
           aws_region: eu-central-1
           fail_on_severity: Critical
+          analysis_type: All
       - name: Print findings
         run: |
           ls -l
