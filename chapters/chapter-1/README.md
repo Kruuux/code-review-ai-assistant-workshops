@@ -1,6 +1,7 @@
 ## Chapter 1 - Repository vulnerabilities walkthrough
 
-The repository contains listed below a selection of popular vulnerabilities.
+1. Repository walkthrough
+2. Explain vulnerabilities
 
 ### Hardcoded credentials
 
