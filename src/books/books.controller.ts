@@ -25,27 +25,6 @@ export class BooksController {
     return this.booksService.create(createBookDto);
   }
 
-  @Post('read-files')
-  readFile(@Body() data: any) {
-    const filePath = path.join(__dirname, 'files', data.pathname);
-    return fs.readFileSync(filePath, 'utf8');
-  }
-
-  @Get('redirect')
-  redirectTo(@Query('url') url: string, @Res() res: Response) {
-    res.redirect(url);
-  }
-
-  @Get('title/:title')
-  returnParsedTitle(@Param('title') title: string) {
-    return `<div>${title}</div>`;
-  }
-
-  @Get('name/:name')
-  findByName(@Param('name') name: string) {
-    return this.booksService.findByName(name);
-  }
-
   @Get()
   findAll() {
     return this.booksService.findAll();
