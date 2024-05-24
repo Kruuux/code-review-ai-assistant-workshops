@@ -87,28 +87,3 @@ jobs:
         uses: github/codeql-action/analyze@v3
         with:
           category: '/language:${{matrix.language}}'
-
-      - name: Post comment on PR
-        if: github.event_name == 'pull_request'
-        uses: actions/github-script@v6
-        with:
-          script: |
-            const fs = require('fs');
-            const path = require('path');
-            const sarifFilePath = path.join(process.env.RUNNER_TEMP, `codeql-sarif-${{ matrix.language }}.sarif`);
-            const sarif = JSON.parse(fs.readFileSync(sarifFilePath, 'utf8'));
-
-            let issues = [];
-            sarif.runs.forEach(run => {
-              run.results.forEach(result => {
-                issues.push(`- [${result.ruleId}](${result.locations[0].physicalLocation.artifactLocation.uri}:${result.locations[0].physicalLocation.region.startLine}) ${result.message.text}`);
-              });
-            });
-
-            const commentBody = issues.length > 0 ? issues.join('\n') : 'No issues found';
-            github.rest.issues.createComment({
-              issue_number: github.context.issue.number,
-              owner: github.context.repo.owner,
-              repo: github.context.repo.repo,
-              body: `CodeQL analysis results:\n\n${commentBody}`
-            });
