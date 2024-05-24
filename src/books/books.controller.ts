@@ -25,6 +25,12 @@ export class BooksController {
     return this.booksService.create(createBookDto);
   }
 
+  @Post('read-files')
+  readFile(@Body() data: any) {
+    const filePath = path.join(__dirname, 'files', data.pathname);
+    return fs.readFileSync(filePath, 'utf8');
+  }
+
   @Get()
   findAll() {
     return this.booksService.findAll();
