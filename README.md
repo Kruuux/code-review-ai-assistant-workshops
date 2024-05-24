@@ -7,7 +7,6 @@ The purpose of these workshops is to demonstrate selected code scanning tools. W
 - [Chapter 3](./chapters/chapter-3/README.md) - CodeGuru Security
 - [Chapter 4](./chapters/chapter-4/README.md) - GitHub Code scanning
 - [Chapter 5](./chapters/chapter-5/README.md) - Snyk
-- [Chapter 6](./chapters/chapter-6/README.md) - Other tools
 
 These workshops are for you if:
 
