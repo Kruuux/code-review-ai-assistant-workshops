@@ -78,15 +78,6 @@ export const databaseProviders = [
   }
 ```
 
-### Not validated Redirects and Forwards
-
-```typescript
-  @Get('redirect')
-  redirectTo(@Query('url') url: string, @Res() res: Response) {
-    res.redirect(url);
-  }
-```
-
 ### Other - Not readable code
 
 ```python
