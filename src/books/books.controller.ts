@@ -27,20 +27,23 @@ export class BooksController {
 
   @Post('read-files')
   readFile(@Body() data: any) {
-    // ===== 4 =====
     const filePath = path.join(__dirname, 'files', data.pathname);
+    return fs.readFileSync(filePath, 'utf8');
+  }
+
+  @Post('read-filess')
+  readFilee(@Body() data: any) {
+    const filePath = path.join(__dirname, 'filess', data.pathname);
     return fs.readFileSync(filePath, 'utf8');
   }
 
   @Get('redirect')
   redirectTo(@Query('url') url: string, @Res() res: Response) {
-    // ===== 5 =====
     res.redirect(url);
   }
 
   @Get('title/:title')
   returnParsedTitle(@Param('title') title: string) {
-    // ===== 3 =====
     return `<div>${title}</div>`;
   }
 
