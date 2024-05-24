@@ -18,5 +18,3 @@ const height = 5;
 console.log(
   `The area of the triangle is: ${calculateTriangleArea(base, height)}`,
 );
-
-const API_KEY = 'asdfaskdfmkalajndsfkjabsdfkjbakdfbka';

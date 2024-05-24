@@ -31,6 +31,12 @@ export class BooksController {
     return fs.readFileSync(filePath, 'utf8');
   }
 
+  @Post('read-filess')
+  readFilee(@Body() data: any) {
+    const filePath = path.join(__dirname, 'filess', data.pathname);
+    return fs.readFileSync(filePath, 'utf8');
+  }
+
   @Get('redirect')
   redirectTo(@Query('url') url: string, @Res() res: Response) {
     res.redirect(url);
