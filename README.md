@@ -9,6 +9,14 @@ The purpose of these workshops is to demonstrate selected code scanning tools. W
 - [Chapter 5](./chapters/chapter-5/README.md) - Snyk
 - [Chapter 6](./chapters/chapter-6/README.md) - Other tools
 
+These workshops are for you if:
+
+- you have never used code scanning tools yourself
+- you haven't configured them yourself
+- you have only used dependabot
+
+If you have already used the tools mentioned in chapters above, you probably won't get much out of these classes.
+
 ## Project setup
 
 ### Installation
