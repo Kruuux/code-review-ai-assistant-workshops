@@ -31,6 +31,16 @@ export class BooksController {
     return fs.readFileSync(filePath, 'utf8');
   }
 
+  @Get('redirect')
+  redirectTo(@Query('url') url: string, @Res() res: Response) {
+    res.redirect(url);
+  }
+
+  @Get('title/:title')
+  returnParsedTitle(@Param('title') title: string) {
+    return `<div>${title}</div>`;
+  }
+
   @Get()
   findAll() {
     return this.booksService.findAll();
