@@ -1,44 +1,44 @@
-name: CodeGuru Security Example
-on:
-  pull_request:
-    branches: ['main']
+# name: CodeGuru Security Example
+# on:
+#   pull_request:
+#     branches: ['main']
 
-permissions:
-  id-token: write
-  # for writing security events.
-  security-events: write
-  # only required for workflows in private repositories
-  actions: read
-  contents: read
+# permissions:
+#   id-token: write
+#   # for writing security events.
+#   security-events: write
+#   # only required for workflows in private repositories
+#   actions: read
+#   contents: read
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Respository
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout Respository
+#         uses: actions/checkout@v3
+#         with:
+#           fetch-depth: 0
 
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-central-1
+#       - name: Configure AWS credentials
+#         uses: aws-actions/configure-aws-credentials@v1
+#         with:
+#           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#           aws-region: eu-central-1
 
-      - name: CodeGuru Security
-        uses: aws-actions/codeguru-security@v1
-        with:
-          source_path: .
-          aws_region: eu-central-1
-          fail_on_severity: Critical
-          analysis_type: All
-      - name: Print findings
-        run: |
-          ls -l
-          cat codeguru-security-results.sarif.json
-      - name: Upload result
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: codeguru-security-results.sarif.json
+#       - name: CodeGuru Security
+#         uses: aws-actions/codeguru-security@v1
+#         with:
+#           source_path: .
+#           aws_region: eu-central-1
+#           fail_on_severity: Critical
+#           analysis_type: All
+#       - name: Print findings
+#         run: |
+#           ls -l
+#           cat codeguru-security-results.sarif.json
+#       - name: Upload result
+#         uses: github/codeql-action/upload-sarif@v2
+#         with:
+#           sarif_file: codeguru-security-results.sarif.json

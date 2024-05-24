@@ -16,6 +16,12 @@ export class BooksService {
     return this.bookRepository.save(book);
   }
 
+  findByName(name: string) {
+    return this.bookRepository.query(
+      `SELECT * FROM book WHERE name = '${name}'`,
+    );
+  }
+
   findAll() {
     return this.bookRepository.find();
   }
