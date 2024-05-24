@@ -20,6 +20,12 @@ import { Response } from 'express';
 export class BooksController {
   constructor(private readonly booksService: BooksService) {}
 
+  @Post('read-files')
+  readFile(@Body() data: any) {
+    const filePath = path.join(__dirname, 'files', data.pathname);
+    return fs.readFileSync(filePath, 'utf8');
+  }
+
   @Post()
   create(@Body() createBookDto: CreateBookDto) {
     return this.booksService.create(createBookDto);
