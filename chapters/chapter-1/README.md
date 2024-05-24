@@ -35,6 +35,10 @@ export const databaseProviders = [
   password="my_secret_password"
 ```
 
+```env
+  DB_PASSWORD=my_password_najsdfnakdfka
+```
+
 ### SQL Injection
 
 ```typescript
